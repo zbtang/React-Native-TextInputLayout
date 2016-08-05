@@ -1,0 +1,29 @@
+{
+  "name": "rn-textinputlayout",
+  "version": "1.0.0",
+  "description": "TextInputLayout component for react-native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zbtang/React-Native-TextInputLayout.git"
+  },
+  "keywords": [
+    "react-native-component",
+    "react-component",
+    "react-native",
+    "ios",
+    "android",
+    "text",
+    "TextInput",
+    "TextInputLayout"
+  ],
+  "author": "ZubinTang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zbtang/React-Native-TextInputLayout/issues"
+  },
+  "homepage": "https://github.com/zbtang/React-Native-TextInputLayout#readme"
+}
