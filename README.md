@@ -5,7 +5,7 @@ Pure js implemention material design TextInputLayout component for react-native,
 
 ## Preview
 
-<img src="./art/demo.gif" width="256" />
+<img src="./art/demo.gif" width="320" style="box-shadow: 4px 4px 50px #888888;"/>
 
 ## Build and run the demo
 
