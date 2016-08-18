@@ -124,6 +124,10 @@ export default class TextInputLayout extends Component {
 
     _onChangeText(text) {
         this._edtText = text;
+        if (this.props.checkValid){
+            let isError = !this.props.checkValid(this._edtText);
+            if(this.state.isError !== isError) setState(isError);
+        }
         this._oriOnChangeText && this._oriOnChangeText(text);
     }
 
