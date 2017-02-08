@@ -3,8 +3,8 @@
  */
 
 'use strict';
-import React, {Component} from 'react';
-import {StyleSheet, View, Animated, Platform} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, Animated, Platform } from 'react-native';
 
 const DEFAULT_PLACEHOLDER_COLOR = '#C7C7CD';
 const DEFAULT_LABEL_COLOR = '#414Db1';
@@ -36,7 +36,7 @@ export default class TextInputLayout extends Component {
         isError: false
     };
 
-    constructor(props) {
+    constructor (props) {
         super(props);
         this._onBlur = this._onBlur.bind(this);
         this._onFocus = this._onFocus.bind(this);
@@ -45,17 +45,17 @@ export default class TextInputLayout extends Component {
         this._handleChildren(props);
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps (nextProps) {
         this._handleChildren(nextProps);
     }
 
-    componentWillUpdate(nextProps, nextState) {
+    componentWillUpdate (nextProps, nextState) {
         if (nextState.showLabel !== this.state.showLabel) {
             this._springValue(this.state.labelAnimationValue, nextState.showLabel ? 1 : 0)
         }
     }
 
-    _springValue(animatedValue, toValue) {
+    _springValue (animatedValue, toValue) {
         Animated.spring(animatedValue, {
             toValue: toValue,
             friction: 10
@@ -67,7 +67,7 @@ export default class TextInputLayout extends Component {
      * @param props
      * @private
      */
-    _handleChildren(props) {
+    _handleChildren (props) {
         let edtChild = React.Children.only(props.children);
         this._oriEdtChild = edtChild;
         this._oriEdtStyle = StyleSheet.flatten([edtChild.props.style])
@@ -92,6 +92,7 @@ export default class TextInputLayout extends Component {
                 padding: 0
             }],
             placeholder: null,
+            underlineColorAndroid: 'transparent'
         });
 
         let {height, fontSize}= this._oriEdtStyle;
@@ -114,13 +115,13 @@ export default class TextInputLayout extends Component {
         };
     }
 
-    _onFocus() {
+    _onFocus () {
         if (!this._edtText) this.setState({showLabel: true, isFocused: true});
         else this.setState({isFocused: true});
         this._oriOnFocus && this._oriOnFocus();
     }
 
-    _onBlur() {
+    _onBlur () {
         let isError = false;
         if (this.props.checkValid) isError = !this.props.checkValid(this._edtText);
         if (!this._edtText) this.setState({showLabel: false, isFocused: false, isError});
@@ -128,7 +129,7 @@ export default class TextInputLayout extends Component {
         this._oriOnBlur && this._oriOnBlur();
     }
 
-    _onChangeText(text) {
+    _onChangeText (text) {
         this._edtText = text;
         if (this.props.checkValid) {
             let isError = !this.props.checkValid(this._edtText);
@@ -137,7 +138,7 @@ export default class TextInputLayout extends Component {
         this._oriOnChangeText && this._oriOnChangeText(text);
     }
 
-    render() {
+    render () {
         let {isFocused, isError}=this.state;
         let {errorColor, hintColor, focusColor}=this.props;
         let color = isError ? errorColor : (isFocused ? focusColor : hintColor);
@@ -148,7 +149,7 @@ export default class TextInputLayout extends Component {
             }, this.props.style]}
             >
                 <Animated.Text
-                    style={[this._labelStyle, {color: color}]}>
+                    style={[this._labelStyle, {color: color}]} >
                     {this.props.labelText || this._oriEdtChild.props.placeholder }
                 </Animated.Text>
                 {this._edtChild}
