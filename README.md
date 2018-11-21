@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
 
 ##Props
 - hintColor
+- borderColor
 - errorColor
 - focusColor
 - labelFontSize
