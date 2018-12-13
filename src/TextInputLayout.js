@@ -15,6 +15,7 @@ export default class TextInputLayout extends Component {
     static propTypes = {
         ...View.propTypes,
         hintColor: PropTypes.string,
+        borderColor: PropTypes.string,
         errorColor: PropTypes.string,
         focusColor: PropTypes.string,
         labelFontSize: PropTypes.number,
@@ -23,6 +24,7 @@ export default class TextInputLayout extends Component {
     };
     static defaultProps = {
         hintColor: DEFAULT_PLACEHOLDER_COLOR,
+        borderColor: DEFAULT_PLACEHOLDER_COLOR,
         errorColor: DEFAULT_LABEL_ERROR_COLOR,
         focusColor: DEFAULT_LABEL_COLOR,
         labelFontSize: 12,
@@ -110,7 +112,7 @@ export default class TextInputLayout extends Component {
         });
         this._labelStyle = {
             fontSize: labelFontSize,
-            height: labelHeight,
+            lineHeight: labelHeight,
             backgroundColor: 'transparent',
             transform: [{translateY: labelTransY}]
         };
@@ -141,12 +143,13 @@ export default class TextInputLayout extends Component {
 
     render () {
         let {isFocused, isError}=this.state;
-        let {errorColor, hintColor, focusColor}=this.props;
+        let {errorColor, hintColor, borderColor, focusColor}=this.props;
         let color = isError ? errorColor : (isFocused ? focusColor : hintColor);
+        let borderBottomColor = isError ? errorColor : (isFocused ? focusColor : borderColor);
         return (
             <View style={[{
                 borderBottomWidth: isFocused ? 2 : 1,
-                borderBottomColor: color
+                borderBottomColor
             }, this.props.style]}
             >
                 <Animated.Text
